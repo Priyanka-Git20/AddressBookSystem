@@ -1,10 +1,11 @@
 '''
     @Author: Priyanka Salunkhe
-    @Date: 2022-04-11 1:30:00
+    @Date: 2022-04-12 2:30:00
     @Last Modified by: Priyanka Salunkhe
-    @Last Modified time: 2022-04-12 3:00:00
-    @Title :Ability to edit the contact in address book.
+    @Last Modified time: 2022-04-12 4:00:00
+    @Title :Ability to delete the contact in address book.
 '''
+
 
 class AddressBook:
     contact = {}
@@ -122,12 +123,31 @@ class AddressBook:
 
         return checkName, AddressBook.contact,AddressBook.contact_length
 
+    def deleteContacts(self):
+        """
+        Description:
+            Delete the contact of the person using their name. .
+        Parameter:
+            self is as parameter
+        Return:
+            Returning dictionary.
+        """
+        checkName = input("Enter the first name to check is it in contact or not")
+        for i in range(AddressBook.contact_length):
+            if checkName == AddressBook.contact[i][0]:
+                del AddressBook.contact[i]
+                print("Delete the person")
+                break
+            else:
+                print("Not in list")
+        return AddressBook.contact
+
 
 if __name__ == '__main__':
     print("Welcome to the address book system.")
     myBook = AddressBook()
     print(
-        'Enter 1. To Add Contacts 2. For display a Contact 3.To edit contacts  4.To Exit')
+        'Enter 1. To Add Contacts 2. For display a Contact 3.To edit contacts 4.To delete contacts 5.To Exit')
     while True:
         choice = int(input('Enter your choice: '))
         if choice == 1:
@@ -145,6 +165,8 @@ if __name__ == '__main__':
         elif choice == 3:
             myBook.editContact(firstName=1, lastName=2, address=3,city= 4, state=5, zip=6, phoneNumber=7, emailId=8)
         elif choice == 4:
+            myBook.deleteContacts()
+        elif choice == 5:
             exit()
         else:
             print('Invalid Option. Try Again!')
