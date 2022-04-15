@@ -9,7 +9,9 @@ class TestAddressBook(unittest.TestCase):
         book.addContacts("Siya", "Salunkhe", "Satara", "Satara", "Maharastra", "415507", "7066647330",
                          "priyanka.chavan1408@gmail.com")
         self.assertEqual(len(book.contact), 1)
-        self.assertTrue(len(book.contact), 1)
+        book.addContacts("Piya", "Salunkhe", "Satara", "Satara", "Maharastra", "415507", "7066647330",
+                         "priyanka.chavan1408@gmail.com")
+        self.assertGreaterEqual(len(book.contact), 1)
 
     def test_editContact(self):
         book.editContact("Siya", "Salunkhe", "Satara", "Satara", "Maharastra", "415507", "7066647330",
