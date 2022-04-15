@@ -1,9 +1,10 @@
+
 '''
     @Author: Priyanka Salunkhe
-    @Date: 2022-04-12 2:30:00
+    @Date: 2022-04-11 4:30:00
     @Last Modified by: Priyanka Salunkhe
-    @Last Modified time: 2022-04-12 4:00:00
-    @Title :Ability to delete the contact in address book.
+    @Last Modified time: 2022-04-13 6:00:00
+    @Title :Ability to add multiple contacts in address book.
 '''
 
 
@@ -39,6 +40,7 @@ class AddressBook:
         Return:
             Returning the dictionary.
         """
+
         lst = []
         lst.append(firstName)
         lst.append(lastName)
@@ -51,6 +53,7 @@ class AddressBook:
         contact_length = len(AddressBook.contact)
         AddressBook.contact[contact_length] = lst
         AddressBook.contact_length += 1
+
         return AddressBook.contact
 
     def displayContact(self):
@@ -147,19 +150,24 @@ if __name__ == '__main__':
     print("Welcome to the address book system.")
     myBook = AddressBook()
     print(
-        'Enter 1. To Add Contacts 2. For display a Contact 3.To edit contacts 4.To delete contacts 5.To Exit')
+        'Enter 1. To Add Contacts 2. For display a Contact  3.To edit 4. To delete contact 5.Exit')
     while True:
         choice = int(input('Enter your choice: '))
         if choice == 1:
-            firstName = str(input("Enter the first name :\n"))
-            lastName = str(input("Enter the last name :\n"))
-            address = str(input("Enter the address :\n"))
-            city = str(input("Enter the city :\n"))
-            state = str(input("Enter the state :\n"))
-            zip = int(input("Enter the zip :\n"))
-            phoneNumber = int(input("Enter the phone number :\n"))
-            emailId = str(input("Enter the email address :\n"))
-            myBook.addContacts(firstName,lastName,address,city,state,zip,phoneNumber,emailId)
+            while True:
+                option = int(input('1. Add multiple contacts, 2. exit '))
+                if option == 1:
+                    firstName = str(input("Enter the first name :\n"))
+                    lastName = str(input("Enter the last name :\n"))
+                    address = str(input("Enter the address :\n"))
+                    city = str(input("Enter the city :\n"))
+                    state = str(input("Enter the state :\n"))
+                    zip = int(input("Enter the zip :\n"))
+                    phoneNumber = int(input("Enter the phone number :\n"))
+                    emailId = str(input("Enter the email address :\n"))
+                    myBook.addContacts(firstName,lastName,address,city,state,zip,phoneNumber,emailId)
+                else:
+                    break
         elif choice == 2:
             myBook.displayContact()
         elif choice == 3:
